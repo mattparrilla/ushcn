@@ -1,0 +1,109 @@
+@import "bootstrap";
+@import "ionicons";
+
+body {
+    font-family: Helvetica Neue;
+    padding: 20px;
+}
+h1, h2 {
+    text-align: right;
+}
+h1 {
+    font-weight: 400;
+    margin: 0;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #888;
+    margin-top: 0;
+}
+
+table#months {
+    margin-top: 50px;
+    margin-left: 27px;
+    td {
+        width: 358px;
+        font-size: 12px;
+    }
+    td#jul {
+        padding-left: 13px;
+    }
+    td#oct {
+        padding-left: 8px;
+    }
+    td#jan2 {
+        padding-left: 8px;
+    }
+}
+
+table.data {
+    margin-top: 20px;
+    border-spacing: 0 2px;
+    tr {
+        td {
+            width: 2px;
+            padding: 0;
+            font-size: 12px;
+            height: 6px !important;
+        }
+        td:first-child {
+            padding-right: 10px;
+            display: none;
+        }
+        td.month {
+            border-left: 2px solid #999;
+            &:last-child {
+                border-left: 0;
+                border-right: 2px solid #999;
+            }
+        }
+    }
+}
+
+td.temp0 {
+    background: #a50026;
+}
+td.temp1 {
+    background: #d73027;
+}
+td.temp2 {
+    background: #f46d43;
+}
+td.temp3 {
+    background: #fdae61;
+}
+td.temp4 {
+    background: #fee090
+}
+td.temp5 {
+    background: #e0f3f8;
+}
+td.temp6 {
+    background: #abd9e9;
+}
+td.temp7 {
+    background: #74add1;
+}
+td.temp8 {
+    background: #4575b4;
+}
+td.temp9 {
+    background: #313695;
+}
+
+table#legend {
+    font-size: 12px;
+    padding: 30px 0 0 35px;
+    td {
+        width: 120px;
+        padding-left: 10px;
+        padding-right: 25px;
+    }
+    td.space {
+        width: 30px;
+        padding: 0;
+        border: 1px solid #bbb;
+    }
+}
