@@ -5628,3 +5628,26 @@ table#legend {
     width: 30px;
     padding: 0;
     border: 1px solid #bbb; }
+
+table#diff td.no_data {
+  background: gray; }
+table#diff td.temp0 {
+  background: #ffffcc; }
+table#diff td.temp1 {
+  background: #ffeda0; }
+table#diff td.temp2 {
+  background: #fed976; }
+table#diff td.temp3 {
+  background: #feb24c; }
+table#diff td.temp4 {
+  background: #fd8d3c; }
+table#diff td.temp5 {
+  background: #fc4e2a; }
+table#diff td.temp6 {
+  background: #e31a1c; }
+table#diff td.temp7 {
+  background: #bd0026; }
+table#diff td.temp8 {
+  background: #800026; }
+table#diff td.temp9 {
+  background: white; }

@@ -41,6 +41,7 @@ def date_to_year():
 
     writer = csv.writer(open('app/data/stj-mean-temp-by-year.csv', 'w'))
     writer.writerows(all_dates)
+    return all_dates
 
 
 def mean_on_date():
@@ -50,15 +51,44 @@ def mean_on_date():
     dates = [l for l in f]
     del dates[0:2]
 
-    temps = [[]] * 366
+    temps = {}
+    for i in range(366):
+        temps[i] = []
 
     for date in dates:
         date_idx = int(date[1]) - 1
-        if date_idx == 0:
-            try:
-                temps[date_idx].append(int(date[5]))
-            except ValueError:
-                pass
-    print temps[5]
+        try:
+            temps[date_idx].append(int(date[5]))
+        except ValueError:
+            pass
 
-mean_on_date()
+    sum_by_date = [0] * 366
+    mean_temps = [0] * 366
+    for i in range(366):
+        sum_by_date[i] = sum(temps[i])
+        mean_temps[i] = float(sum_by_date[i]) / len(temps[i])
+
+    return mean_temps
+
+
+def diff_from_mean():
+    """ Finds the difference from mean for each date in USHCN climate data"""
+    all_dates = date_to_year()
+    mean = mean_on_date()
+
+    del all_dates[0]
+
+    diff_from_mean = []
+    for year in all_dates:
+        this_year = [''] * 366
+        for i in range(366):
+            year_idx = i + 1
+            if type(year[year_idx]) is int:
+                this_year[i] = (year[year_idx] - mean[i])
+
+        diff_from_mean.append(this_year)
+
+    writer = csv.writer(open('app/data/stj-diff-from-mean.csv', 'w'))
+    writer.writerows(diff_from_mean)
+
+diff_from_mean()

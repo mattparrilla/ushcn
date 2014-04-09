@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>{% block title %}Vermont Public Radio{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Matthew Parrilla, VPR, @mattparrilla">
+
+    <!-- Styles -->
+{% block style %}
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+</head>
+
+<body>
+
+<h1>Daily Max Temperature in Burlington, VT 1941-2012</h1>
+<h2>Created by: @mattparrilla of @vprnet // Data Source: USHCN, Burlington Station</h2>
+{#
+<table id="months">
+    <tr>
+        <td id="jan">Jan</td>
+        <td id="apr">Apr</td>
+        <td id="jul">Jul</td>
+        <td id="oct">Oct</td>
+        <td id="jan2">Jan</td>
+    </tr>
+</table>
+#}
+
+{% for temp in temperatures %}
+    <table id="diff" class="data">
+    {% for year in years %}
+        {% if loop.index == 1 %}
+        <tr>
+            {% for day in year %}
+                <td {% if day|int == 1 %}class="month"{% endif %}></td>
+            {% endfor %}
+        </tr>
+        {% else %}
+        <tr>
+            {% for day in year %}
+                <td
+                {% if not day %}class="no_data"
+                {% elif day|int < temp.0 %}class="temp9"
+                {% elif day|int >=temp.0 and day|int < temp.1 %}class="temp8"
+                {% elif day|int >=temp.1 and day|int < temp.2 %}class="temp7"
+                {% elif day|int >=temp.2 and day|int < temp.3 %}class="temp6"
+                {% elif day|int >=temp.3 and day|int < temp.4 %}class="temp5"
+                {% elif day|int >=temp.4 and day|int < temp.5 %}class="temp4"
+                {% elif day|int >=temp.5 and day|int < temp.6 %}class="temp3"
+                {% elif day|int >=temp.6 and day|int < temp.7 %}class="temp2"
+                {% elif day|int >=temp.7 and day|int < temp.8 %}class="temp1"
+                {% elif day|int >=temp.8 %}class="temp0"
+                {% endif %}></td>
+            {% endfor %}
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </table>
+
+    {#
+    <table id="legend">
+        <tr>
+            <td class="space sub20"></td>
+            <td>Below 20&deg;F</td>
+            <td class="space sub30"></td>
+            <td>20 - 30</td>
+            <td class="space sub40"></td>
+            <td>30 - 40</td>
+            <td class="space sub50"></td>
+            <td>40 - 50</td>
+            <td class="space sub60"></td>
+            <td>50 - 60</td>
+            <td class="space sub70"></td>
+            <td>60 - 70</td>
+            <td class="space sub80"></td>
+            <td>70 - 80</td>
+            <td class="space sub90"></td>
+            <td>80 - 90</td>
+            <td class="space greater90"></td>
+            <td>Above 90</td>
+        </tr>
+    </table>
+    #}
+{% endfor %}
+
+</body>
+</html>
