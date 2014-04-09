@@ -50,7 +50,7 @@ table.data {
         }
         td:first-child {
             padding-right: 10px;
-            display: none;
+            font-size: 8px;
         }
         td.month {
             border-left: 2px solid #999;
@@ -62,6 +62,9 @@ table.data {
     }
 }
 
+td.no_data {
+    background: gray;
+}
 td.temp0 {
     background: #a50026;
 }

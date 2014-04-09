@@ -45,7 +45,8 @@
                     <td>{{ day }}</td>
                 {% else %}
                     <td
-                    {% if day|int < temp.0 %}class="temp9"
+                    {% if not day %}class="no_data"
+                    {% elif day|int < temp.0 %}class="temp9"
                     {% elif day|int >=temp.0 and day|int < temp.1 %}class="temp8"
                     {% elif day|int >=temp.1 and day|int < temp.2 %}class="temp7"
                     {% elif day|int >=temp.2 and day|int < temp.3 %}class="temp6"
